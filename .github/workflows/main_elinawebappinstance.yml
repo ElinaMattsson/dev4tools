@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://elinaregname.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_9283925a13c241bbaf92a2b477198d3e }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_d3409032c5bd44bf8f1473e3bd8a26fc }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_e4c58c9538c049f7bd79f70a0a3dea49 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_710fe99b5fde4b3a8a3c524bc745fec6 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: elinaregname.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_9283925a13c241bbaf92a2b477198d3e }}/dev4tools:${{ github.sha }}
+        tags: elinaregname.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_e4c58c9538c049f7bd79f70a0a3dea49 }}/dev4tools:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'elinawebappinstance'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_55b68eb58c1b4f8e8cf5e49e84a1ca6d }}
-        images: 'elinaregname.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_9283925a13c241bbaf92a2b477198d3e }}/dev4tools:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_882d5c11a8384f6b89b663090efa0cbf }}
+        images: 'elinaregname.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_e4c58c9538c049f7bd79f70a0a3dea49 }}/dev4tools:${{ github.sha }}'
